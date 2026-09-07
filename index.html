@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Team portfolio and WhatsApp contact website">
+  <title>TEAM.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#07090d;--panel:#0e1219;--text:#f5f7fb;--muted:#9ba4b3;--line:rgba(255,255,255,.09);--accent:#25d366}
+    html{scroll-behavior:smooth}
+    body{font-family:"Cairo",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:20;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:rgba(7,9,13,.72);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .logo{font-size:25px;font-weight:800;letter-spacing:1px}.logo span{color:var(--accent)}
+    nav{display:flex;gap:30px;color:#c8ced8;font-size:14px}nav a:hover{color:#fff}
+    .nav-contact{border:1px solid var(--line);padding:9px 15px;border-radius:999px;font-size:13px}
+    .hero{min-height:100vh;padding:150px 8% 80px;display:flex;align-items:center;justify-content:space-between;gap:50px;position:relative}
+    .hero-content{max-width:680px;z-index:2}.eyebrow,.mini-title,.role{font-size:12px;letter-spacing:2px;color:#aeb7c6;font-weight:700}
+    .hero h1{font-size:clamp(48px,7vw,88px);line-height:1.1;margin:16px 0}.hero h1 span,.contact h2 span{background:linear-gradient(90deg,#fff,#8f7bff);-webkit-background-clip:text;color:transparent}
+    .hero p{color:var(--muted);max-width:600px;font-size:17px;margin-bottom:30px}
+    .primary-btn,.whatsapp-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:13px 20px;font-weight:700;transition:.25s}
+    .primary-btn{background:#fff;color:#080a0f}.primary-btn:hover,.whatsapp-btn:hover{transform:translateY(-3px)}
+    .hero-orb{width:360px;height:360px;position:relative;display:grid;place-items:center}.orb-core{width:130px;height:130px;border-radius:50%;display:grid;place-items:center;font-size:42px;background:linear-gradient(145deg,#191d29,#0c0f15);border:1px solid var(--line);box-shadow:0 0 80px rgba(124,92,255,.25)}
+    .orb-ring{position:absolute;border:1px solid rgba(124,92,255,.3);border-radius:50%;animation:spin 12s linear infinite}.ring-one{width:250px;height:250px}.ring-two{width:350px;height:350px;animation-direction:reverse;animation-duration:18s}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .section{padding:110px 8%;position:relative}.section-head{display:flex;gap:20px;align-items:flex-start;margin-bottom:45px}.section-head>span{color:#555d6b;font-size:14px}.section-head h2{font-size:42px}
+    .cards,.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .card{background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border:1px solid var(--line);border-radius:22px;padding:28px;min-height:220px;transition:.3s}.card:hover,.member:hover{transform:translateY(-6px);border-color:rgba(124,92,255,.4)}.icon{font-size:30px;margin-bottom:22px}.card h3{font-size:19px;margin-bottom:9px}.card p,.member p{color:var(--muted);font-size:14px}
+    .team-section{background:rgba(255,255,255,.018)}.team-grid{grid-template-columns:repeat(2,1fr)}.member{display:flex;gap:24px;align-items:center;background:var(--panel);border:1px solid var(--line);padding:30px;border-radius:24px;transition:.3s}.avatar{width:88px;height:88px;flex:none;border-radius:24px;display:grid;place-items:center;font-size:34px;font-weight:800;background:linear-gradient(145deg,#171b26,#0b0e14);border:1px solid var(--line)}.member h3{font-size:30px;margin:2px 0 5px}.member-info>p:not(.role){margin-bottom:17px}.whatsapp-btn{background:var(--accent);color:#07120a;font-size:13px}
+    .contact{margin:110px 8%;padding:55px;border-radius:30px;border:1px solid var(--line);background:radial-gradient(circle at 10% 20%,rgba(124,92,255,.15),transparent 35%),var(--panel);display:flex;align-items:center;justify-content:space-between;gap:40px}
+    .contact h2{font-size:48px;line-height:1.25;margin:8px 0 15px}.contact>div:first-child>p:last-child{color:var(--muted)}.contact-buttons{display:flex;flex-direction:column;gap:12px;min-width:250px}.large{width:100%;padding:15px 20px}
+    footer{padding:30px 8%;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#737c8c;font-size:12px}
+    .bubbles span{position:fixed;width:7px;height:7px;border-radius:50%;background:rgba(124,92,255,.35);pointer-events:none;z-index:-1;animation:float 9s ease-in-out infinite}
+    .bubbles span:nth-child(1){top:20%;left:12%}.bubbles span:nth-child(2){top:70%;left:20%;animation-delay:2s}.bubbles span:nth-child(3){top:35%;right:14%;animation-delay:4s}.bubbles span:nth-child(4){top:82%;right:25%;animation-delay:1s}.bubbles span:nth-child(5){top:12%;right:38%;animation-delay:3s}
+    @keyframes float{50%{transform:translate(35px,-55px) scale(1.8);opacity:.8}}
+    @media(max-width:900px){.hero{padding-top:130px}.hero-orb{width:250px;height:250px}.ring-one{width:190px;height:190px}.ring-two{width:250px;height:250px}.cards{grid-template-columns:repeat(2,1fr)}.team-grid{grid-template-columns:1fr}.contact{flex-direction:column;align-items:flex-start}.contact-buttons{width:100%}}
+    @media(max-width:650px){.navbar{padding:0 5%;height:68px}.navbar nav{display:none}.nav-contact{font-size:11px;padding:7px 11px}.hero{min-height:auto;padding:125px 6% 90px;display:block}.hero h1{font-size:48px}.hero p{font-size:15px}.hero-orb{margin:70px auto 10px}.section{padding:80px 6%}.section-head h2{font-size:34px}.cards{grid-template-columns:1fr}.card{min-height:auto}.member{align-items:flex-start;flex-direction:column}.contact{margin:70px 6%;padding:32px 24px}.contact h2{font-size:37px}footer{padding:25px 6%;flex-direction:column;gap:8px}}
+  </style>
+</head>
+
+<body>
+  <div class="bubbles" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <header class="navbar">
+    <a class="logo" href="#home">TEAM<span>.</span></a>
+    <nav>
+      <a href="#home">الرئيسية</a>
+      <a href="#services">الخدمات</a>
+      <a href="#team">الفريق</a>
+      <a href="#contact">تواصل</a>
+    </nav>
+    <a class="nav-contact" href="#contact">📞 تواصل معنا</a>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">DIGITAL TEAM</span>
+        <h1>نصنع حلولًا<br><span>رقمية حقيقية.</span></h1>
+        <p>تصميم واجهات، تطوير مواقع، Backend، وحلول Cyber Security — كل ما تحتاجه في فريق واحد.</p>
+        <a class="primary-btn" href="#contact">📞 تواصل معنا</a>
+      </div>
+      <div class="hero-orb" aria-hidden="true">
+        <div class="orb-ring ring-one"></div>
+        <div class="orb-ring ring-two"></div>
+        <div class="orb-core">✦</div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="section-head">
+        <span>01</span>
+        <div><p class="mini-title">SERVICES</p><h2>خدماتنا</h2></div>
+      </div>
+      <div class="cards services-grid">
+        <article class="card"><div class="icon">🎨</div><h3>UI/UX Design</h3><p>تصميم واجهات وتجربة مستخدم واضحة وعصرية.</p></article>
+        <article class="card"><div class="icon">🖥️</div><h3>Frontend Development</h3><p>تحويل التصميم إلى مواقع سريعة ومتجاوبة.</p></article>
+        <article class="card"><div class="icon">⚙️</div><h3>Backend Development</h3><p>برمجة الأنظمة، قواعد البيانات وواجهات الـAPI.</p></article>
+        <article class="card"><div class="icon">🛡️</div><h3>Cyber Security</h3><p>مراجعة وتأمين التطبيقات والأنظمة بشكل مسؤول.</p></article>
+      </div>
+    </section>
+
+    <section id="team" class="section team-section">
+      <div class="section-head">
+        <span>02</span>
+        <div><p class="mini-title">OUR TEAM</p><h2>الفريق</h2></div>
+      </div>
+      <div class="team-grid">
+        <article class="member">
+          <div class="avatar">م</div>
+          <div class="member-info">
+            <p class="role">UI/UX + FRONTEND</p>
+            <h3>معاذ</h3>
+            <p>متخصص في UI/UX Design وFrontend Development.</p>
+            <a class="whatsapp-btn" target="_blank" rel="noopener" href="https://wa.me/201213707524">📞 تواصل مع معاذ على WhatsApp</a>
+          </div>
+        </article>
+
+        <article class="member">
+          <div class="avatar">ح</div>
+          <div class="member-info">
+            <p class="role">BACKEND + CYBER SECURITY</p>
+            <h3>حازم</h3>
+            <p>متخصص في Backend Development وCyber Security.</p>
+            <a class="whatsapp-btn" target="_blank" rel="noopener" href="https://wa.me/201208839442">📞 تواصل مع حازم على WhatsApp</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div>
+        <p class="mini-title">CONTACT</p>
+        <h2>عندك مشروع؟<br><span>اتكلم معانا.</span></h2>
+        <p>اختار الشخص المناسب لمشروعك وتواصل معه مباشرة على WhatsApp.</p>
+      </div>
+      <div class="contact-buttons">
+        <a class="whatsapp-btn large" target="_blank" rel="noopener" href="https://wa.me/201213707524">📞 تواصل مع معاذ</a>
+        <a class="whatsapp-btn large" target="_blank" rel="noopener" href="https://wa.me/201208839442">📞 تواصل مع حازم</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>TEAM.</span>
+    <span>© <span id="year"></span> — All Rights Reserved</span>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener("click", event => {
+        const target = document.querySelector(link.getAttribute("href"));
+        if (target) {
+          event.preventDefault();
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
